@@ -6,8 +6,8 @@ import jakarta.persistence.*
 data class CarTypeEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long = -1,
     val value: String,
     @OneToMany(mappedBy = "carType", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
-    val cars: Set<CarEntity>
+    val cars: Set<CarEntity> = emptySet()
 )
