@@ -10,6 +10,8 @@ import ru.xdragon.carsservicebackend.repository.CarTypeRepository
 
 import CarServiceOuterClass.CarRequest
 import CarServiceOuterClass.CarResponse
+import CarServiceOuterClass.CarRequestEmptyRequest
+import CarServiceOuterClass.ListCarResponse
 import CarServiceGrpc.CarServiceImplBase
 
 
@@ -36,6 +38,31 @@ class CarService : CarServiceImplBase() {
             .setId(carEntity.id!!)
             .setName(carEntity.name)
             .setCarTypeId(carTypeEntity.id!!)
+            .setCarTypeValue(carTypeEntity.value)
+            .build()
+        
+        responseObserver.onNext(response)
+        responseObserver.onCompleted()
+    }
+
+    override fun getAllCars(request: CarRequestEmptyRequest, responseObserver: StreamObserver<ListCarResponse>) {
+        val result: MutableList<CarResponse> = mutableListOf()
+
+        carRepository.findAll().forEach { car ->
+            result.add(
+                CarResponse
+                    .newBuilder()
+                    .setId(car.id!!)
+                    .setName(car.name)
+                    .setCarTypeId(car.carType.id!!)
+                    .setCarTypeValue(car.carType.value)
+                    .build()
+            )
+        }
+
+        val response = ListCarResponse
+            .newBuilder()
+            .addAllCars(result)
             .build()
         
         responseObserver.onNext(response)
