@@ -8,7 +8,7 @@ data class CarEntity(
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     val id: Long? = null,
     val name: String,
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "type_id", nullable = false)
     val carType: CarTypeEntity,
     @OneToMany(mappedBy = "car", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
