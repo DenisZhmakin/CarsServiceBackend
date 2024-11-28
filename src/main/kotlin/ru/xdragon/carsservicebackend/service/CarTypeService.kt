@@ -11,11 +11,11 @@ import CarTypeServiceOuterClass.CarTypeRequest
 import CarTypeServiceOuterClass.CarTypeResponse
 import CarTypeServiceOuterClass.CarTypeEmptyRequest
 import CarTypeServiceOuterClass.ListCarTypeResponse
-import CarTypeServiceGrpc.CarTypeServiceImplBase as CarTypeServiceBase
+import CarTypeServiceGrpc.CarTypeServiceImplBase
 
 
 @GrpcService
-class CarTypeService : CarTypeServiceBase() {
+class CarTypeService : CarTypeServiceImplBase() {
     @Autowired
     private lateinit var carTypeRepository: CarTypeRepository
 

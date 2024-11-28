@@ -6,8 +6,8 @@ import jakarta.persistence.*
 data class CarStatusTypeEntity(
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long? = null,
     val value: String,
     @OneToMany(mappedBy = "statusType", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
-    val statusEvents: Set<CarStatusEventsEntity>
+    val statusEvents: Set<CarStatusEventsEntity> = setOf()
 )
