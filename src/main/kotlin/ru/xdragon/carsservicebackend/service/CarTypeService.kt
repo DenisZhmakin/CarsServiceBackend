@@ -7,7 +7,6 @@ import net.devh.boot.grpc.server.service.GrpcService
 import org.springframework.beans.factory.annotation.Autowired
 import ru.xdragon.carsservicebackend.entity.CarTypeEntity
 import ru.xdragon.carsservicebackend.repository.CarTypeRepository
-
 import CarTypeServiceGrpc.CarTypeServiceImplBase as CarTypeServiceBase
 
 @GrpcService
