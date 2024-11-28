@@ -4,7 +4,7 @@ import jakarta.persistence.*
 import java.util.*
 
 @Entity(name = "status_events")
-data class StatusEventsEntity(
+data class CarStatusEventsEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
@@ -16,5 +16,5 @@ data class StatusEventsEntity(
     val car: CarEntity,
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "status_type_id", nullable = false)
-    val statusType: StatusTypeEntity
+    val statusType: CarStatusTypeEntity
 )

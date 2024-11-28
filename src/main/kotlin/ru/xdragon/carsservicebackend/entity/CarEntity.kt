@@ -12,5 +12,5 @@ data class CarEntity(
     @JoinColumn(name = "type_id", nullable = false)
     val carType: CarTypeEntity,
     @OneToMany(mappedBy = "car", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
-    val carStatusEvents: Set<StatusEventsEntity>
+    val carStatusEvents: Set<CarStatusEventsEntity>
 )
