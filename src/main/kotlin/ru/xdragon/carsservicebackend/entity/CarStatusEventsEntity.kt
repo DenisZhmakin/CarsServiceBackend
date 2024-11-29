@@ -1,20 +1,20 @@
 package ru.xdragon.carsservicebackend.entity
 
 import jakarta.persistence.*
-import java.util.*
+import java.time.LocalDateTime
 
 @Entity(name = "status_events")
 data class CarStatusEventsEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
-    val name: String,
-    val index: Int,
-    val timeOfRegistration: Date,
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    val id: Long? = null,
+    val index: Long,
+    val timeOfRegistration: LocalDateTime,
+    val activeStatusSeconds: Long,
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "car_id", nullable = false)
     val car: CarEntity,
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "status_type_id", nullable = false)
     val statusType: CarStatusTypeEntity
 )
