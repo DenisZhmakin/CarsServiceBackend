@@ -69,7 +69,7 @@ class CarStatusEventsService : CarStatusEventsServiceImplBase() {
             .setTimeOfRegistration(carStatusEventsEntity.timeOfRegistration.format(
                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
             ))
-            .setActiveStatusTime(activeStatusSeconds)
+            .setActiveStatusSeconds(activeStatusSeconds)
             .build()
 
         responseObserver.onNext(response)
@@ -96,7 +96,7 @@ class CarStatusEventsService : CarStatusEventsServiceImplBase() {
                             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
                         )
                     )
-                    .setActiveStatusTime(carStatusEvent.activeStatusSeconds)
+                    .setActiveStatusSeconds(carStatusEvent.activeStatusSeconds)
                     .build()
             )
         }
