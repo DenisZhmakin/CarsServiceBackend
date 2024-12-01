@@ -29,6 +29,7 @@ val grpcKotlinVersion = "1.4.1"
 
 dependencies {
     // Spring
+    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 //    implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
 
